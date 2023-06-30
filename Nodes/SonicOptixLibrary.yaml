@@ -1,0 +1,31 @@
+Name: SonicOptixLibrary
+Type: ObjectLibraryProjectFolder
+Children:
+- File: Items/Items.yaml
+- File: Types/Types.yaml
+- File: Translations/Translations.yaml
+- Name: Localization
+  Type: PropertyGroup
+- Name: Authentication
+  Type: PropertyGroup
+- Name: PasswordPolicy
+  Type: PasswordPolicy
+  Children:
+  - Name: MaximumPasswordAge
+    Type: PropertyType
+    DataType: UInt16
+    Value: 0
+  - Name: EnforcePasswordHistory
+    Type: PropertyType
+    DataType: Byte
+    Value: 1
+  - Name: MinimumPasswordAge
+    Type: PropertyType
+    DataType: UInt16
+    Value: 0
+  - Name: MinimumPasswordLength
+    Type: PropertyType
+    DataType: Byte
+    Value: 8
+- Name: AlarmConfiguration
+  Type: PropertyGroup

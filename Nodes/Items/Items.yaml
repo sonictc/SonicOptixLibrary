@@ -1,0 +1,151 @@
+Name: Items
+Type: FolderType
+Children:
+- Name: LineNotification
+  Type: ObjectLibraryItem
+  Children:
+  - Name: LineNotification
+    Id: g=13e35f4c0c4736f08c6b8de119af391a
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Class: Method
+      Name: SendLineNotify
+      Children:
+      - Name: ns=0;InputArguments
+        Type: BaseVariableType
+        DataType: Argument
+        ReferenceType: HasProperty
+        ModellingRule: None
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"alarmActive","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingAlertMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingClearMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useAlertSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useClearSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+    - Name: LineAccessToken
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "bXVKuoork7L8GkOsykDt6J5VkUSXic7mCNfscbSi7d3"
+- Name: ConvertHz
+  Type: ObjectLibraryItem
+  Children:
+  - Name: ConvertHz
+    Id: g=b20e27f74823cbda53b847b8e37c5dbd
+    Supertype: ExpressionEvaluator
+    ReferenceType: HasComponent
+    Children:
+    - Name: Expression
+      Type: BaseDataVariableType
+      DataType: String
+      ReferenceType: HasParameter
+      Value: "{0}/100"
+    - Name: ns=2;Source0
+      Type: BaseDataVariableType
+      DataType: BaseDataType
+      ReferenceType: HasSource
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: ""
+- Name: MotorFaultCode
+  Type: ObjectLibraryItem
+  Children:
+  - Name: MotorFaultCode
+    Id: g=dcb26f57f3dbcca9761c096b6adcff13
+    Supertype: ValueMapConverter
+    ReferenceType: HasComponent
+    Children:
+    - Name: Pairs
+      Type: BaseObjectType
+      ModellingRule: None
+      Children:
+      - Name: Pair
+        Type: ValueMapPair
+        ModellingRule: None
+        Children:
+        - Name: Key
+          Type: BaseDataVariableType
+          DataType: UInt32
+          ModellingRule: None
+          Value: 1
+        - Name: Value
+          Type: BaseDataVariableType
+          DataType: String
+          ModellingRule: None
+          Value: "Undervoltage"
+      - Name: Pair1
+        Type: ValueMapPair
+        ModellingRule: None
+        Children:
+        - Name: Key
+          Type: BaseDataVariableType
+          DataType: UInt32
+          ModellingRule: None
+          Value: 2
+        - Name: Value
+          Type: BaseDataVariableType
+          DataType: String
+          ModellingRule: None
+          Value: "Motor Overload"
+      - Name: Pair2
+        Type: ValueMapPair
+        ModellingRule: None
+        Children:
+        - Name: Key
+          Type: BaseDataVariableType
+          DataType: UInt32
+          ModellingRule: None
+          Value: 3
+        - Name: Value
+          Type: BaseDataVariableType
+          DataType: String
+          ModellingRule: None
+          Value: "Communication Lost"
+- Name: MotorStatusColor
+  Type: ObjectLibraryItem
+  Children:
+  - Name: MotorStatusColor
+    Id: g=e0adc0d10240c6c8a286a2cbfe66378a
+    Supertype: ConditionalConverter
+    ReferenceType: HasComponent
+    Children:
+    - Name: Condition
+      Type: BaseDataVariableType
+      DataType: Boolean
+      ReferenceType: HasSource
+      Value: false
+    - Name: TrueValue
+      Type: BaseDataVariableType
+      DataType: Color
+      ReferenceType: HasParameter
+      Value: "#33ea0b"
+    - Name: FalseValue
+      Type: BaseDataVariableType
+      DataType: Color
+      ReferenceType: HasParameter
+      ModellingRule: Optional
+      Value: "#b2b2b2"
+- Name: MotorStatusText
+  Type: ObjectLibraryItem
+  Children:
+  - Name: MotorStatusText
+    Id: g=66734a86b976615baf1fd02675302480
+    Supertype: ConditionalConverter
+    ReferenceType: HasComponent
+    Children:
+    - Name: Condition
+      Type: BaseDataVariableType
+      DataType: Boolean
+      ReferenceType: HasSource
+      Value: false
+    - Name: TrueValue
+      Type: BaseDataVariableType
+      DataType: String
+      ReferenceType: HasParameter
+      ModellingRule: Optional
+      Value: "Running"
+    - Name: FalseValue
+      Type: BaseDataVariableType
+      DataType: String
+      ReferenceType: HasParameter
+      ModellingRule: Optional
+      Value: "Stopped"
