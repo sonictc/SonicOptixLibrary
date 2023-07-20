@@ -5575,3 +5575,62 @@ Children:
       Children:
       - Class: Method
         Name: RefreshGraph
+- Name: WebBrowser1
+  Type: ObjectLibraryItem
+  Children:
+  - Name: WebBrowser1
+    Id: g=2546187f6b028bbfe3107ad367d03626
+    Supertype: Panel
+    ReferenceType: HasComponent
+    Children:
+    - Name: Width
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 1160.0
+    - Name: Height
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 600.0
+    - Name: WebBrowser
+      Type: ns=6;WebBrowser
+      Children:
+      - Class: Reference
+        Target: ns=6;i=354
+        Direction: Forward
+      - Class: Reference
+        Target: ns=6;i=356
+        Direction: Forward
+      - Class: Reference
+        Target: ns=6;i=358
+        Direction: Forward
+      - Name: URL
+        Type: BaseDataVariableType
+        DataType: ResourceUri
+        Value: "ns=4;%PROJECTDIR%/eCharts/BasicLineChart.html"
+      - Name: Width
+        Type: BaseVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 300.0
+      - Name: Height
+        Type: BaseVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 300.0
+      - Name: HorizontalAlignment
+        Type: BaseVariableType
+        DataType: HorizontalAlignment
+        ModellingRule: Optional
+        Value: 3
+      - Name: VerticalAlignment
+        Type: BaseVariableType
+        DataType: VerticalAlignment
+        ModellingRule: Optional
+        Value: 3
+    - Name: eChartLogic
+      Type: NetLogic
+      Children:
+      - Class: Method
+        Name: RefreshGraph
