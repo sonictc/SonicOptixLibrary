@@ -5506,3 +5506,72 @@ Children:
       Type: BaseDataVariableType
       DataType: Color
       Value: "#8ef27b"
+- Name: eChartRadarLogic
+  Type: ObjectLibraryItem
+  Children:
+  - Name: eChartRadarLogic
+    Id: g=29f24b81b0f5118567e1e2bd186f29d4
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Class: Method
+      Name: RefreshRadarGraph
+- Name: WebBrowser
+  Type: ObjectLibraryItem
+  Children:
+  - Name: ns=4;WebBrowser
+    Id: g=2c496a8cf0c304730efb570b934f9c11
+    Supertype: Panel
+    ReferenceType: HasComponent
+    Children:
+    - Name: Width
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 1160.0
+    - Name: Height
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 600.0
+    - Name: WebBrowser
+      Type: ns=6;WebBrowser
+      Children:
+      - Class: Reference
+        Target: ns=6;i=354
+        Direction: Forward
+      - Class: Reference
+        Target: ns=6;i=356
+        Direction: Forward
+      - Class: Reference
+        Target: ns=6;i=358
+        Direction: Forward
+      - Name: URL
+        Type: BaseDataVariableType
+        DataType: ResourceUri
+        Value: "ns=4;%PROJECTDIR%/eCharts/BasicLineChart.html"
+      - Name: Width
+        Type: BaseVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 300.0
+      - Name: Height
+        Type: BaseVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 300.0
+      - Name: HorizontalAlignment
+        Type: BaseVariableType
+        DataType: HorizontalAlignment
+        ModellingRule: Optional
+        Value: 3
+      - Name: VerticalAlignment
+        Type: BaseVariableType
+        DataType: VerticalAlignment
+        ModellingRule: Optional
+        Value: 3
+    - Name: eChartLogic
+      Type: NetLogic
+      Children:
+      - Class: Method
+        Name: RefreshGraph
