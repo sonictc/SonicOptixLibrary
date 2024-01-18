@@ -5551,7 +5551,7 @@ Children:
       - Name: ListenEventType
         Type: PropertyType
         DataType: NodeId
-        Value: {"Id":14,"Namespace":6}
+        Value: "/Types/EventTypes/BaseEventType/MouseEvent/MouseDownEvent"
       - Name: MethodsToCall
         Type: BaseObjectType
         Children:
@@ -5561,12 +5561,12 @@ Children:
           - Name: ns=2;ObjectPointer
             Type: NodePointer
             DataType: NodeId
-            Value: {"Id":22,"Namespace":2}
+            Value: "/Objects/Commands/VariableCommands"
             Children:
             - Name: Kind
               Type: PropertyType
               DataType: NodeId
-              Value: {"Id":58}
+              Value: "/Types/ObjectTypes/BaseObjectType"
           - Name: ns=2;Method
             Type: BaseDataVariableType
             DataType: String
@@ -5642,7 +5642,7 @@ Children:
       - Name: ListenEventType
         Type: PropertyType
         DataType: NodeId
-        Value: {"Id":15,"Namespace":6}
+        Value: "/Types/EventTypes/BaseEventType/MouseEvent/MouseUpEvent"
       - Name: MethodsToCall
         Type: BaseObjectType
         Children:
@@ -5652,12 +5652,12 @@ Children:
           - Name: ns=2;ObjectPointer
             Type: NodePointer
             DataType: NodeId
-            Value: {"Id":22,"Namespace":2}
+            Value: "/Objects/Commands/VariableCommands"
             Children:
             - Name: Kind
               Type: PropertyType
               DataType: NodeId
-              Value: {"Id":58}
+              Value: "/Types/ObjectTypes/BaseObjectType"
           - Name: ns=2;Method
             Type: BaseDataVariableType
             DataType: String
@@ -5727,3 +5727,18 @@ Children:
           Type: PropertyType
           DataType: UInt16
           Value: 0
+- Name: Motor
+  Type: ObjectLibraryItem
+  Children:
+  - Name: Motor
+    Id: g=aa7ced6b4e3e0506a923b5823d499f8a
+    Supertype: BaseObjectType
+    Children:
+    - Name: Running
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+    - Name: Speed
+      Type: BaseDataVariableType
+      DataType: Float
+      Value: 0.0
