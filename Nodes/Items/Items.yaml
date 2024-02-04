@@ -199,3 +199,40 @@ Children:
         ValueRank: OneDimension
         ArrayDimensions: [0]
         Value: [{"TypeId":{"Id":296},"Body":{"Name":"activeWebSessionNumber","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+- Name: CSVToLogger
+  Type: ObjectLibraryItem
+  Children:
+  - Name: CSVToLogger
+    Id: g=8d27ea283a4d64a1a45f97729f3d6178
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: BehaviourStartPriority
+      Type: BehaviourStartPriorityVariableType
+      DataType: Byte
+      Value: 180
+    - Class: Method
+      Name: Export
+    - Class: Method
+      Name: Import
+    - Name: DataLogger
+      Type: NodePointer
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"998c135e4193e7d758884a0e4f55a9bc","Namespace":4}
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/ObjectTypes/BaseObjectType/DataLogger"
+    - Name: CSVFile
+      Type: BaseDataVariableType
+      DataType: ResourceUri
+      Value: "ns=4;%PROJECTDIR%/log.csv"
+    - Name: WrapFields
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+    - Name: CSVSeparator
+      Type: BaseDataVariableType
+      DataType: String
+      Value: ","

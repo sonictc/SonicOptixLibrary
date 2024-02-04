@@ -21,14 +21,18 @@ Project:
    Uri: 'urn:FTOptix:NetLogic'
    Module: FTOptix.NetLogic
    Version: 1.0
+  6:
+   Uri: 'urn:FTOptix:DataLogger'
+   Module: FTOptix.DataLogger
+   Version: 1.0
  Statistics:
-  TotalNodeCount: 55
-  Objects: 20
-  ObjectTypes: 8
-  Variables: 24
+  TotalNodeCount: 65
+  Objects: 21
+  ObjectTypes: 9
+  Variables: 30
   VariableTypes: 0
   DataTypes: 0
-  Methods: 3
+  Methods: 5
   References: 0
   ReferenceTypes: 0
   Files: 4
