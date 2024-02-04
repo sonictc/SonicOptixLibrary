@@ -199,11 +199,11 @@ Children:
         ValueRank: OneDimension
         ArrayDimensions: [0]
         Value: [{"TypeId":{"Id":296},"Body":{"Name":"activeWebSessionNumber","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
-- Name: CSVToLogger
+- Name: CSVToLogger1
   Type: ObjectLibraryItem
   Children:
-  - Name: CSVToLogger
-    Id: g=8d27ea283a4d64a1a45f97729f3d6178
+  - Name: CSVToLogger1
+    Id: g=b49452f252b7d6129cc06169e2c9fe6b
     Supertype: NetLogic
     ReferenceType: HasComponent
     Children:
