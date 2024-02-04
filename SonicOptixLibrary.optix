@@ -21,18 +21,14 @@ Project:
    Uri: 'urn:FTOptix:NetLogic'
    Module: FTOptix.NetLogic
    Version: 1.0
-  6:
-   Uri: 'urn:FTOptix:UI'
-   Module: FTOptix.UI
-   Version: 11.0
  Statistics:
-  TotalNodeCount: 1315
-  Objects: 133
-  ObjectTypes: 10
-  Variables: 1170
+  TotalNodeCount: 55
+  Objects: 20
+  ObjectTypes: 8
+  Variables: 24
   VariableTypes: 0
   DataTypes: 0
-  Methods: 2
+  Methods: 3
   References: 0
   ReferenceTypes: 0
   Files: 4
