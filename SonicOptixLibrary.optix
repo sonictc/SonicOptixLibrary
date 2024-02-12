@@ -26,15 +26,15 @@ Project:
    Module: FTOptix.DataLogger
    Version: 1.0
  Statistics:
-  TotalNodeCount: 65
-  Objects: 21
+  TotalNodeCount: 72
+  Objects: 22
   ObjectTypes: 9
-  Variables: 30
+  Variables: 36
   VariableTypes: 0
   DataTypes: 0
   Methods: 5
   References: 0
   ReferenceTypes: 0
-  Files: 4
+  Files: 5
  Nodes:
  - File: Nodes/SonicOptixLibrary.yaml

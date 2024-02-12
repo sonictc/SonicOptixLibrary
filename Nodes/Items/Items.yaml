@@ -159,18 +159,6 @@ Children:
     Children:
     - Class: Method
       Name: RefreshRadarGraph
-- Name: ClockLogic
-  Type: ObjectLibraryItem
-  Children:
-  - Name: ClockLogic
-    Id: g=d7a8cfea89ea6a22e921bf2ce129a4f7
-    Supertype: NetLogic
-    ReferenceType: HasComponent
-    Children:
-    - Name: Time
-      Type: BaseDataVariableType
-      DataType: DateTime
-      Value: "1601-01-01T00:00:00.0000000"
 - Name: CountWebClient
   Type: ObjectLibraryItem
   Description: {"LocaleId":"","Text":"This netlogic is used for counting the active web client. \nHow to use >>\nCreate an event to call \"GetActiveWebSessionsNumber\" Method under this netlogic"}
@@ -236,3 +224,41 @@ Children:
       Type: BaseDataVariableType
       DataType: String
       Value: ","
+- Name: CSVLog
+  Type: ObjectLibraryItem
+  Description: {"LocaleId":"","Text":"Rev.1.0\nUse this NetLogic to log the variable to CSV file.\nHow to use.\n1. Define the file header that will be on the first row of the file\n2. Define the absolute file path to the csv file. The actual file name will be automatically extended by current date.\n3. Define LogTrigger by the tag eg. the machine running bit if you want to log only when machine is running\n4. Add as much as you want variables in any format. The name of variable will be use to be the header of the column in csv file\n"}
+  Children:
+  - Name: CSVLog
+    Id: g=3248907c3291544e6bb7902e7baaf0a2
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: Header
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "This is the header for CSV file to show what is this log for"
+    - Name: CSVPath
+      Type: BaseDataVariableType
+      DataType: AbsoluteResourceUri
+      Value: "file:///D:/data.csv"
+    - Name: LogTrigger
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+    - Name: Variable1
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Variable2
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Variable3
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Variable4
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+- File: NetLogic/NetLogic.yaml
