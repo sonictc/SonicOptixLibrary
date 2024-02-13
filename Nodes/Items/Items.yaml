@@ -224,12 +224,13 @@ Children:
       Type: BaseDataVariableType
       DataType: String
       Value: ","
+- File: NetLogic/NetLogic.yaml
 - Name: CSVLog
   Type: ObjectLibraryItem
-  Description: {"LocaleId":"","Text":"Rev.1.0\nUse this NetLogic to log the variable to CSV file.\nHow to use.\n1. Define the file header that will be on the first row of the file\n2. Define the absolute file path to the csv file. The actual file name will be automatically extended by current date.\n3. Define LogTrigger by the tag eg. the machine running bit if you want to log only when machine is running\n4. Add as much as you want variables in any format. The name of variable will be use to be the header of the column in csv file\n"}
+  Description: {"LocaleId":"","Text":"Rev.1.0\nUse this NetLogic to log the variable to CSV file.\nHow to use.\n1. Define the file header that will be on the first row of the file\n2. Define the absolute file path to the csv file. The actual file name will be automatically extended by current date.\n3. Define LogTrigger by the tag eg. the machine running bit if you want to log only when machine is running\n4. Define LogInterval for sample to be logged\n4. Add as much as you want variables in any format. The name of variable will be use to be the header of the column in csv file\n"}
   Children:
   - Name: CSVLog
-    Id: g=3248907c3291544e6bb7902e7baaf0a2
+    Id: g=7e05ae442b24a912cd48205d18e8b32b
     Supertype: NetLogic
     ReferenceType: HasComponent
     Children:
@@ -245,6 +246,21 @@ Children:
       Type: BaseDataVariableType
       DataType: Boolean
       Value: true
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../../Model/Running"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Name: LogInterval
+      Type: BaseDataVariableType
+      DataType: Duration
+      Value: "0:00:00:1.0000000"
     - Name: Variable1
       Type: BaseDataVariableType
       DataType: Int32
@@ -253,12 +269,3 @@ Children:
       Type: BaseDataVariableType
       DataType: Int32
       Value: 0
-    - Name: Variable3
-      Type: BaseDataVariableType
-      DataType: Int32
-      Value: 0
-    - Name: Variable4
-      Type: BaseDataVariableType
-      DataType: Int32
-      Value: 0
-- File: NetLogic/NetLogic.yaml
