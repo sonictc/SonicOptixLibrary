@@ -187,10 +187,10 @@ Children:
         ValueRank: OneDimension
         ArrayDimensions: [0]
         Value: [{"TypeId":{"Id":296},"Body":{"Name":"activeWebSessionNumber","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
-- Name: CSVToLogger1
+- Name: CSVToLogger
   Type: ObjectLibraryItem
   Children:
-  - Name: CSVToLogger1
+  - Name: CSVToLogger
     Id: g=b49452f252b7d6129cc06169e2c9fe6b
     Supertype: NetLogic
     ReferenceType: HasComponent
@@ -224,27 +224,658 @@ Children:
       Type: BaseDataVariableType
       DataType: String
       Value: ","
-- File: NetLogic/NetLogic.yaml
+- Name: BrowseFile
+  Type: ObjectLibraryItem
+  Children:
+  - Name: BrowseFile
+    Id: g=a79a81a63ba120a6a512e78581a3cb6e
+    Supertype: Popup
+    ReferenceType: HasComponent
+    Children:
+    - Class: Reference
+      Target: ns=9;i=621
+      Direction: Forward
+    - Name: Width
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 480.0
+    - Name: Height
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 320.0
+    - Name: Background
+      Type: Rectangle
+      Children:
+      - Name: Width
+        Type: BaseVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 238.0
+      - Name: Height
+        Type: BaseVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 298.0
+      - Name: CornerRadius
+        Type: BaseDataVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 8.0
+      - Name: BorderColor
+        Type: BaseDataVariableType
+        DataType: Color
+        Value: "#dbdfe2"
+      - Name: FillColor
+        Type: BaseDataVariableType
+        DataType: Color
+        Value: "#f1f4f6"
+      - Name: HorizontalAlignment
+        Type: BaseVariableType
+        DataType: HorizontalAlignment
+        ModellingRule: Optional
+        Value: 3
+      - Name: VerticalAlignment
+        Type: BaseVariableType
+        DataType: VerticalAlignment
+        ModellingRule: Optional
+        Value: 3
+      - Name: FilesystemBrowser
+        Type: ColumnLayout
+        WriteMask: BrowseName|DataType|Description|DisplayName|MinimumSamplingInterval|UserAccessLevel
+        Children:
+        - Name: Label1
+          Type: Label
+          Children:
+          - Name: Text
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            ModellingRule: Optional
+            Value: {"NamespaceIndex":4,"TextId":"Browse"}
+          - Name: BottomMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 8.0
+          - Name: LeftMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 8.0
+          - Name: TopMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 4.0
+        - Name: FilesystemBrowserLogic
+          Type: NetLogic
+          Children:
+          - Name: FilesList
+            Type: BaseObjectType
+          - Name: Path
+            Type: BaseDataVariableType
+            DataType: ResourceUri
+            Value: ""
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../FolderPath"
+              Children:
+              - Name: Mode
+                Type: BaseVariableType
+                DataType: DynamicLinkMode
+                Value: 2
+        - Name: FolderBar
+          Type: RowLayout
+          Children:
+          - Name: Width
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 50.0
+          - Name: Locations
+            Type: ComboBox
+            Children:
+            - Class: Reference
+              Target: ns=9;i=480
+              Direction: Forward
+            - Name: Text
+              Type: BaseDataVariableType
+              DataType: LocalizedText
+              Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+            - Name: Model
+              Type: NodePointer
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+              Children:
+              - Name: ItemKind
+                Type: PropertyType
+                DataType: NodeId
+                Value: {"IdType":0,"Id":0,"Namespace":-1}
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+                Value: {"IdType":0,"Id":0,"Namespace":-1}
+              - Name: CollegamentoDinamico
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "../../../Locations@NodeId"
+            - Name: SelectedValue
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+            - Name: SelectedItem
+              Type: NodePointer
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+                Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: Item
+              Type: Alias
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+                Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: HorizontalAlignment
+              Type: BaseVariableType
+              DataType: HorizontalAlignment
+              ModellingRule: Optional
+              Value: 0
+            - Name: Width
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 160.0
+            - Name: DisplayValuePath
+              Type: BaseDataVariableType
+              DataType: LocalizedText
+              Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+              Children:
+              - Name: CollegamentoDinamico
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Item}@DisplayName"
+            - Name: SelectedValuePath
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+              Children:
+              - Name: CollegamentoDinamico
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "{Item}@Value"
+            - Name: UISelectedItem
+              Type: BaseDataVariableType
+              DataType: NodeId
+              AccessLevel: Read
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: UISelectedValue
+              Type: BaseDataVariableType
+              DataType: BaseDataType
+              AccessLevel: Read
+            - Name: LeftMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 8.0
+          - Name: RelativePath
+            Type: TextBox
+            Children:
+            - Name: Text
+              Type: BaseDataVariableType
+              DataType: LocalizedText
+              Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+            - Name: Width
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 110.0
+            - Name: HorizontalAlignment
+              Type: BaseVariableType
+              DataType: HorizontalAlignment
+              ModellingRule: Optional
+              Value: 3
+            - Name: LeftMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 8.0
+            - Name: RightMargin
+              Type: BaseVariableType
+              DataType: Size
+              ModellingRule: Optional
+              Value: 8.0
+          - Name: HorizontalAlignment
+            Type: BaseVariableType
+            DataType: HorizontalAlignment
+            ModellingRule: Optional
+            Value: 3
+          - Name: FolderBarLogic
+            Type: NetLogic
+            Children:
+            - Name: Path
+              Type: BaseDataVariableType
+              DataType: ResourceUri
+              Value: "0"
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "../../../FolderPath"
+                Children:
+                - Name: Mode
+                  Type: BaseVariableType
+                  DataType: DynamicLinkMode
+                  ModellingRule: Optional
+                  Value: 2
+          - Name: TopMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 8.0
+        - Name: DataGrid
+          Type: DataGrid
+          Children:
+          - Name: Model
+            Type: NodePointer
+            DataType: NodeId
+            Value: {"IdType":0,"Id":0,"Namespace":-1}
+            Children:
+            - Name: ItemKind
+              Type: PropertyType
+              DataType: NodeId
+              Value: "/Objects/SonicOptixLibrary/Types/FileEntry"
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+              Value: {"IdType":0,"Id":0,"Namespace":-1}
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "../../FilesystemBrowserLogic/FilesList@NodeId"
+          - Name: Query
+            Type: BaseDataVariableType
+            DataType: String
+            Value: ""
+          - Name: Columns
+            Type: BaseObjectType
+            Children:
+            - Name: DataGridColumn1
+              Type: DataGridColumn
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+                Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+              - Name: Width
+                Type: BaseDataVariableType
+                DataType: Size
+                Value: 40.0
+              - Name: HeaderAlignment
+                Type: BaseDataVariableType
+                DataType: TextHorizontalAlignment
+                Value: 0
+              - Name: ContentAlignment
+                Type: BaseVariableType
+                DataType: HorizontalAlignment
+                Value: 2
+              - Name: OrderBy
+                Type: BaseDataVariableType
+                DataType: NodePath
+                Value: ""
+              - Name: DataItemTemplate
+                Type: DataGridImageItemTemplate
+                Children:
+                - Name: Path
+                  Type: BaseDataVariableType
+                  DataType: ResourceUri
+                  Value: ""
+                  Children:
+                  - Name: KeyValueConverter1
+                    Type: ValueMapConverter
+                    Children:
+                    - Name: Source
+                      Type: BaseDataVariableType
+                      DataType: BaseDataType
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "{Item}/IsDirectory"
+                    - Name: Pairs
+                      Type: BaseObjectType
+                      Children:
+                      - Name: Pair
+                        Type: ValueMapPair
+                        Children:
+                        - Name: Key
+                          Type: BaseDataVariableType
+                          DataType: Boolean
+                          Value: false
+                        - Name: Value
+                          Type: BaseDataVariableType
+                          DataType: ResourceUri
+                          Value: "ns=4;%PROJECTDIR%/FilesystemBrowser/FileDark.svg"
+                      - Name: Pair1
+                        Type: ValueMapPair
+                        Children:
+                        - Name: Key
+                          Type: BaseDataVariableType
+                          DataType: Boolean
+                          Value: true
+                        - Name: Value
+                          Type: BaseDataVariableType
+                          DataType: ResourceUri
+                          Value: "ns=4;%PROJECTDIR%/FilesystemBrowser/Folder_normal.svg"
+                - Name: Width
+                  Type: BaseDataVariableType
+                  DataType: Size
+                  Value: 16.0
+                - Name: Height
+                  Type: BaseDataVariableType
+                  DataType: Size
+                  Value: 16.0
+            - Name: DataGridColumn2
+              Type: DataGridColumn
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+                Value: {"NamespaceIndex":4,"TextId":"Filename"}
+              - Name: Width
+                Type: BaseDataVariableType
+                DataType: Size
+                Value: -1.0
+              - Name: HeaderAlignment
+                Type: BaseDataVariableType
+                DataType: TextHorizontalAlignment
+                Value: 0
+              - Name: ContentAlignment
+                Type: BaseVariableType
+                DataType: HorizontalAlignment
+                Value: 0
+              - Name: OrderBy
+                Type: BaseDataVariableType
+                DataType: NodePath
+                Value: ""
+              - Name: DataItemTemplate
+                Type: DataGridLabelItemTemplate
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+                  Children:
+                  - Name: DynamicLink
+                    Type: DynamicLink
+                    DataType: NodePath
+                    Value: "{Item}/FileName"
+            - Name: DataGridColumn3
+              Type: DataGridColumn
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+                Value: {"NamespaceIndex":4,"TextId":"Size"}
+              - Name: Width
+                Type: BaseDataVariableType
+                DataType: Size
+                Value: 100.0
+              - Name: HeaderAlignment
+                Type: BaseDataVariableType
+                DataType: TextHorizontalAlignment
+                Value: 1
+              - Name: ContentAlignment
+                Type: BaseVariableType
+                DataType: HorizontalAlignment
+                Value: 1
+              - Name: OrderBy
+                Type: BaseDataVariableType
+                DataType: NodePath
+                Value: ""
+              - Name: DataItemTemplate
+                Type: DataGridLabelItemTemplate
+                Children:
+                - Name: Text
+                  Type: BaseDataVariableType
+                  DataType: LocalizedText
+                  Value: {"NamespaceIndex":-1,"LocaleId":"","Text":""}
+                  Children:
+                  - Name: StringFormatter1
+                    Type: StringFormatter
+                    Children:
+                    - Name: Format
+                      Type: BaseDataVariableType
+                      DataType: LocalizedText
+                      ReferenceType: HasParameter
+                      ModellingRule: Optional
+                      Value: {"LocaleId":"en-US","Text":"{0:n} KB"}
+                    - Name: ns=2;Source0
+                      Type: BaseDataVariableType
+                      DataType: BaseDataType
+                      ReferenceType: HasSource
+                      Children:
+                      - Name: DynamicLink
+                        Type: DynamicLink
+                        DataType: NodePath
+                        Value: "{Item}/Size"
+          - Name: SelectedItem
+            Type: NodePointer
+            DataType: NodeId
+            Value: {"IdType":0,"Id":0,"Namespace":-1}
+            Children:
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+              Value: "/Objects/SonicOptixLibrary/Types/FileEntry"
+          - Name: Width
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 300.0
+          - Name: Height
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 260.0
+          - Name: Item
+            Type: Alias
+            DataType: NodeId
+            Value: {"IdType":0,"Id":0,"Namespace":-1}
+            Children:
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+              Value: "/Objects/SonicOptixLibrary/Types/FileEntry"
+          - Name: LeftMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 8.0
+          - Name: RightMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 8.0
+          - Name: HorizontalAlignment
+            Type: BaseVariableType
+            DataType: HorizontalAlignment
+            ModellingRule: Optional
+            Value: 3
+          - Name: BottomMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 8.0
+          - Name: VerticalAlignment
+            Type: BaseVariableType
+            DataType: VerticalAlignment
+            ModellingRule: Optional
+            Value: 3
+          - Name: FilesystemBrowserDatagridLogic
+            Type: NetLogic
+          - Name: TopMargin
+            Type: BaseVariableType
+            DataType: Size
+            ModellingRule: Optional
+            Value: 8.0
+          - Name: UISelectedItem
+            Type: BaseDataVariableType
+            DataType: NodeId
+            AccessLevel: Read
+            Value: {"IdType":0,"Id":0,"Namespace":-1}
+          - Class: Reference
+            Target: ns=9;i=504
+            Direction: Forward
+        - Name: FolderPath
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+          Value: "%PROJECTDIR%\\"
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "/Objects/FeaturesDemo2/Model/Data/DataLogger/FolderPath"
+            Children:
+            - Name: Mode
+              Type: BaseVariableType
+              DataType: DynamicLinkMode
+              ModellingRule: Optional
+              Value: 2
+        - Name: FullPath
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+          Value: ""
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "/Objects/FeaturesDemo2/NetLogic/DataLoggerExporter/CSVPath"
+            Children:
+            - Name: Mode
+              Type: BaseVariableType
+              DataType: DynamicLinkMode
+              ModellingRule: Optional
+              Value: 2
+        - Name: ExtensionFilter
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "*.*"
+        - Name: Locations
+          Type: BaseObjectType
+          Children:
+          - Name: APPLICATION_DIR
+            Type: BaseDataVariableType
+            DataType: ResourceUri
+            DisplayName: {"NamespaceIndex":4,"TextId":"ApplicationFolder"}
+            Value: "%APPLICATIONDIR%\\"
+          - Name: PROJECT_DIR
+            Type: BaseDataVariableType
+            DataType: ResourceUri
+            DisplayName: {"NamespaceIndex":4,"TextId":"ProjectFolder"}
+            Value: "%PROJECTDIR%\\"
+        - Name: AccessFullFilesystem
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+        - Name: ShowHiddenFiles
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+        - Name: AccessNetworkDrives
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+        - Name: TopMargin
+          Type: BaseVariableType
+          DataType: Size
+          ModellingRule: Optional
+          Value: 0.0
+        - Name: HorizontalAlignment
+          Type: BaseVariableType
+          DataType: HorizontalAlignment
+          ModellingRule: Optional
+          Value: 3
+        - Name: VerticalAlignment
+          Type: BaseVariableType
+          DataType: VerticalAlignment
+          ModellingRule: Optional
+          Value: 3
+        - Name: LeftMargin
+          Type: BaseVariableType
+          DataType: Size
+          ModellingRule: Optional
+          Value: 0.0
+      - Name: BorderThickness
+        Type: BaseDataVariableType
+        DataType: Size
+        ModellingRule: Optional
+        Value: 1.0
+    - Name: HorizontalAlignment
+      Type: BaseVariableType
+      DataType: HorizontalAlignment
+      ModellingRule: Optional
+      Value: 1
+    - Name: RightMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 10.0
+- Name: ResetDefaultStyle
+  Type: ObjectLibraryItem
+  Children:
+  - Name: ResetDefaultStyle
+    Id: g=846cb1642ef4ed335084ae3a26c47b9c
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+- Name: SetStyleSheetToPresentationEngine
+  Type: ObjectLibraryItem
+  Children:
+  - Name: SetStyleSheetToPresentationEngine
+    Id: g=27a107eddf026e64930fa0eeea1e194f
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Class: Method
+      Name: SetStyleSheet
+      Children:
+      - Name: ns=0;InputArguments
+        Type: BaseVariableType
+        DataType: Argument
+        ReferenceType: HasProperty
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"newStyleSheet","DataType":{"Id":17},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
 - Name: CSVLog
   Type: ObjectLibraryItem
-  Description: {"LocaleId":"","Text":"Rev.1.0\nUse this NetLogic to log the variable to CSV file.\nHow to use.\n1. Define the file header that will be on the first row of the file\n2. Define the absolute file path to the csv file. The actual file name will be automatically extended by current date.\n3. Define LogTrigger by the tag eg. the machine running bit if you want to log only when machine is running\n4. Define LogInterval for sample to be logged\n4. Add as much as you want variables in any format. The name of variable will be use to be the header of the column in csv file\n"}
+  Description: {"LocaleId":"","Text":"Rev.1.0\nUse this NetLogic to log the variable to CSV file.\nHow to use.\n1. Define the file header that will be on the first row of the file\n2. Define the absolute file path to the csv file. The actual file name will be automatically extended by current date. the file must be exist\n3. Define LogTrigger by the tag eg. the machine running bit if you want to log only when machine is running\n4. Define LogInterval for sample to be logged\n5. Define Program and area name\n6. Add as much as you want variables in any format. The name of variable will be use to be the header of the column in csv file\n"}
   Children:
   - Name: CSVLog
-    Id: g=7e05ae442b24a912cd48205d18e8b32b
+    Id: g=9f53cc1664b5de59cc8f61c30acfc0b8
     Supertype: NetLogic
     ReferenceType: HasComponent
     Children:
     - Name: Header
       Type: BaseDataVariableType
       DataType: String
-      Value: "This is the header for CSV file to show what is this log for"
+      Description: {"LocaleId":"en-US","Text":"Header for CSV file to be on the first row"}
+      Value: "Machine1"
     - Name: CSVPath
       Type: BaseDataVariableType
       DataType: AbsoluteResourceUri
-      Value: "file:///D:/data.csv"
+      Description: {"LocaleId":"en-US","Text":"Specify path to master file. The file must be exist."}
+      Value: "file:///D:/CSVLog/file.csv"
     - Name: LogTrigger
       Type: BaseDataVariableType
       DataType: Boolean
+      Description: {"LocaleId":"en-US","Text":"Bind log trigger boolean (true=log, false=stop)"}
       Value: true
       Children:
       - Name: DynamicLink
@@ -261,11 +892,28 @@ Children:
       Type: BaseDataVariableType
       DataType: Duration
       Value: "0:00:00:1.0000000"
+    - Name: ProgramName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "CIP1"
+    - Name: AreaName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Area1"
+    - Name: LogStatus
+      Type: BaseDataVariableType
+      DataType: String
+      Description: {"LocaleId":"en-US","Text":"Identify current logging status. usage : link label text to this property"}
+      Value: ""
     - Name: Variable1
       Type: BaseDataVariableType
       DataType: Int32
       Value: 0
     - Name: Variable2
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Variable3
       Type: BaseDataVariableType
       DataType: Int32
       Value: 0

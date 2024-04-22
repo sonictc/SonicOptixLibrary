@@ -1,2 +1,19 @@
 Name: Types
 Type: FolderType
+Children:
+- Name: FileEntry
+  Id: g=e6468705b0e338094ea431f36d411d7f
+  Supertype: BaseObjectType
+  Children:
+  - Name: FileName
+    Type: BaseDataVariableType
+    DataType: String
+    Value: ""
+  - Name: Size
+    Type: BaseDataVariableType
+    DataType: Float
+    Value: 0.0
+  - Name: IsDirectory
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: false
