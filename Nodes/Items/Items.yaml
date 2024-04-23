@@ -853,11 +853,11 @@ Children:
         ValueRank: OneDimension
         ArrayDimensions: [0]
         Value: [{"TypeId":{"Id":296},"Body":{"Name":"newStyleSheet","DataType":{"Id":17},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
-- Name: CSVLog
+- Name: LogToCSV
   Type: ObjectLibraryItem
   Children:
-  - Name: CSVLog
-    Id: g=1e19c2c408599b9e006799d256ee0731
+  - Name: LogToCSV
+    Id: g=3efcde5a52f26232ee7abd3e5ad4fc95
     Supertype: NetLogic
     ReferenceType: HasComponent
     Children:
