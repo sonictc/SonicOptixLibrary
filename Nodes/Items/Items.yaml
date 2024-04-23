@@ -853,3 +853,66 @@ Children:
         ValueRank: OneDimension
         ArrayDimensions: [0]
         Value: [{"TypeId":{"Id":296},"Body":{"Name":"newStyleSheet","DataType":{"Id":17},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+- Name: CSVLog
+  Type: ObjectLibraryItem
+  Children:
+  - Name: CSVLog
+    Id: g=1e19c2c408599b9e006799d256ee0731
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: Header
+      Type: BaseDataVariableType
+      DataType: String
+      Description: {"LocaleId":"en-US","Text":"Header for CSV file to be on the first row"}
+      Value: "Machine1"
+    - Name: CSVPath
+      Type: BaseDataVariableType
+      DataType: AbsoluteResourceUri
+      Description: {"LocaleId":"en-US","Text":"Specify path to master file. The file must be exist."}
+      Value: "file:///D:/CSVLog/file.csv"
+    - Name: LogTrigger
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Description: {"LocaleId":"en-US","Text":"Bind log trigger boolean (true=log, false=stop)"}
+      Value: true
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../../Model/Running"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Name: LogInterval
+      Type: BaseDataVariableType
+      DataType: Duration
+      Value: "0:00:00:1.0000000"
+    - Name: ProgramName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "CIP1"
+    - Name: AreaName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Area1"
+    - Name: LogStatus
+      Type: BaseDataVariableType
+      DataType: String
+      Description: {"LocaleId":"en-US","Text":"Identify current logging status. usage : link label text to this property"}
+      Value: ""
+    - Name: Variable1
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Variable2
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
+    - Name: Variable3
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 0
