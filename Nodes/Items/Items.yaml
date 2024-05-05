@@ -1,29 +1,6 @@
 Name: Items
 Type: FolderType
 Children:
-- Name: LineNotification
-  Type: ObjectLibraryItem
-  Children:
-  - Name: LineNotification
-    Id: g=13e35f4c0c4736f08c6b8de119af391a
-    Supertype: NetLogic
-    ReferenceType: HasComponent
-    Children:
-    - Class: Method
-      Name: SendLineNotify
-      Children:
-      - Name: ns=0;InputArguments
-        Type: BaseVariableType
-        DataType: Argument
-        ReferenceType: HasProperty
-        ModellingRule: None
-        ValueRank: OneDimension
-        ArrayDimensions: [0]
-        Value: [{"TypeId":{"Id":296},"Body":{"Name":"alarmActive","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingAlertMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingClearMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useAlertSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useClearSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
-    - Name: LineAccessToken
-      Type: BaseDataVariableType
-      DataType: String
-      Value: "bXVKuoork7L8GkOsykDt6J5VkUSXic7mCNfscbSi7d3"
 - Name: ConvertHz
   Type: ObjectLibraryItem
   Children:
@@ -916,3 +893,26 @@ Children:
       Type: BaseDataVariableType
       DataType: Int32
       Value: 0
+- Name: LineNotifyLogic
+  Type: ObjectLibraryItem
+  Children:
+  - Name: LineNotifyLogic
+    Id: g=04422a0be7924ba5bb97a746a60d7aca
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Class: Method
+      Name: SendLineNotify
+      Children:
+      - Name: ns=0;InputArguments
+        Type: BaseVariableType
+        DataType: Argument
+        ReferenceType: HasProperty
+        ModellingRule: None
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"alarmActive","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingAlertMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingClearMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useAlertSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useClearSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+    - Name: LineAccessToken
+      Type: BaseDataVariableType
+      DataType: Password
+      Value: ""
