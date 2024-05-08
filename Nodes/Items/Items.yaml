@@ -893,26 +893,3 @@ Children:
       Type: BaseDataVariableType
       DataType: Int32
       Value: 0
-- Name: LineNotifyLogic
-  Type: ObjectLibraryItem
-  Children:
-  - Name: LineNotifyLogic
-    Id: g=f22cebe7c7b450e7f6f1b9016b8b72f4
-    Supertype: NetLogic
-    ReferenceType: HasComponent
-    Children:
-    - Class: Method
-      Name: SendLineNotify
-      Children:
-      - Name: ns=0;InputArguments
-        Type: BaseVariableType
-        DataType: Argument
-        ReferenceType: HasProperty
-        ModellingRule: None
-        ValueRank: OneDimension
-        ArrayDimensions: [0]
-        Value: [{"TypeId":{"Id":296},"Body":{"Name":"alarmActive","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingAlertMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"allowSendingClearMsg","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearMessage","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useAlertSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"alertStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"useClearSticker","DataType":{"Id":1},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerPackageId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"clearStickerId","DataType":{"Id":6},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
-    - Name: LineAccessToken
-      Type: BaseDataVariableType
-      DataType: Password
-      Value: ""
