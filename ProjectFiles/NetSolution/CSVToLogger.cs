@@ -19,7 +19,7 @@ using System.Text;
 using System.Linq;
 #endregion
 
-public class CSVToLogger : BaseNetLogic
+public class CSVToLogger1 : BaseNetLogic
 {
     [ExportMethod]
     public void Import()
@@ -300,11 +300,11 @@ public class CSVToLogger : BaseNetLogic
         return null;
     }
 
-    private struct ConverterPairDataType
-    {
-        public NodeId KeyDataType;
-        public NodeId ValueDataType;
-    }
+    // private struct ConverterPairDataType
+    // {
+    //     public NodeId KeyDataType;
+    //     public NodeId ValueDataType;
+    // }
 
     #region CSVFileReader
     private class CSVFileReader : IDisposable
