@@ -67,7 +67,7 @@ public class LineNotifyLogic : BaseNetLogic
 
    public void HTTPRequest(byte[] data){
         
-        string accessToken = Project.Current.GetVariable("NetLogic/LineNotification/LineAccessToken").Value;
+        string accessToken = LogicObject.GetVariable("LineAccessToken").Value;
         //string accessToken = "bXVKuoork7L8GkOsykDt6J5VkUSXic7mCNfscbSi7d3";
         string url = "https://notify-api.line.me/api/notify";
         try
