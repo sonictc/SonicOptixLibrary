@@ -897,7 +897,7 @@ Children:
   Type: ObjectLibraryItem
   Children:
   - Name: LineNotifyLogic
-    Id: g=04422a0be7924ba5bb97a746a60d7aca
+    Id: g=27b1ee50719fafdb80f29d7385b869ca
     Supertype: NetLogic
     ReferenceType: HasComponent
     Children:
@@ -1065,6 +1065,7 @@ Children:
       Children:
       - Class: Reference
         Target: ns=9;i=519
+        Direction: Forward
       - Name: Width
         Type: BaseVariableType
         DataType: Size
@@ -15122,6 +15123,7 @@ Children:
                 AccessLevel: Read
               - Class: Reference
                 Target: ns=9;i=480
+                Direction: Forward
               - Name: Width
                 Type: BaseVariableType
                 DataType: Size
@@ -15399,6 +15401,7 @@ Children:
                 AccessLevel: Read
               - Class: Reference
                 Target: ns=9;i=480
+                Direction: Forward
               - Name: Width
                 Type: BaseVariableType
                 DataType: Size
@@ -15820,6 +15823,7 @@ Children:
                 AccessLevel: Read
               - Class: Reference
                 Target: ns=9;i=480
+                Direction: Forward
               - Name: Width
                 Type: BaseVariableType
                 DataType: Size

@@ -11,7 +11,7 @@ Children:
     "Type": 12,
     "Dimensions": [6,4],
     "Body": [
-     "Key","en-US","it-IT","zh-CN",
+     "","en-US","it-IT","zh-CN",
      "Size","Size","Dimensione","尺寸",
      "Filename","File name","Nome file","文件名",
      "ApplicationFolder","Application folder","Cartella applicazione","应用程序文件夹",
