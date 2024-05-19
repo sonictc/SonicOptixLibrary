@@ -49,9 +49,3 @@ Children:
     Type: BaseDataVariableType
     DataType: Int32
     Value: 0
-- Class: Reference
-  Type: HasComponent
-  Target: g=94d7b2561fe8ff04383a2f864ab268de
-- Class: Reference
-  Type: HasComponent
-  Target: g=254d6aed01cdc4cf94bb9725d7ab7707
