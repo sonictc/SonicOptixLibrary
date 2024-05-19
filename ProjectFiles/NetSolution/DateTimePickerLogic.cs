@@ -17,8 +17,6 @@ public class DateTimePickerLogic : BaseNetLogic
 {
     public override void Start()
     {
-        //var SelectedTime = Owner.Get("SelectedTime1");
-        // DateTime selectedDateTime = SelectedTime.GetVariable("SelectedDateTime").Value;
         SelectedTime = LogicObject.GetVariable("SelectedTime");
         UISelected = LogicObject.GetVariable("UISelectedTime");
        
@@ -34,10 +32,6 @@ public class DateTimePickerLogic : BaseNetLogic
         }
         else
         {
-            // SelectedTime.GetVariable("SelectedHour").Value = selectedDateTime.ToString("HH");
-            // SelectedTime.GetVariable("SelectedMinute").Value = selectedDateTime.ToString("mm");
-            // SelectedTime.GetVariable("SelectedSecond").Value = selectedDateTime.ToString("ss");
-            // repaintCalendar(selectedDateTime);
             UISelected.Value = selectedDateTime.Date;
             UISelected.GetVariable("Hour").Value = selectedDateTime.ToString("HH");
             UISelected.GetVariable("Minute").Value = selectedDateTime.ToString("mm");
@@ -60,9 +54,6 @@ public class DateTimePickerLogic : BaseNetLogic
         LogicObject.GetVariable("DisplayMonthYearHeader").Value = date.ToString("MMM, yyyy");
         LogicObject.GetVariable("DisplayMonth").Value = date.ToString("MM");
         LogicObject.GetVariable("DisplayYear").Value = date.ToString("yyyy");
-
-        // var SelectedTime = Owner.Get("SelectedTime1");
-        // SelectedTime.GetVariable("SelectedDateTime").Value = date;
 
         var panel = Owner.Get("Layout/DayPanel");
 
@@ -93,26 +84,11 @@ public class DateTimePickerLogic : BaseNetLogic
         }
         ;
     }
-
-    public int HexColorToDecimal(string hexColor)
-    {
-        // Remove the '#' character if present
-        if (hexColor.StartsWith("#"))
-        {
-            hexColor = hexColor.Substring(1);
-        }
-
-        // Convert the hexadecimal string to a decimal integer
-        int decimalColor = Convert.ToInt32(hexColor, 16);
-        return decimalColor;
-    }
-
     public static DateTime GetCurrentDate()
     {
         TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
         return TimeZoneInfo.ConvertTime(DateTime.Now, timeZoneInfo);
     }
-
     public static List<DateTime> GetMonthDates(DateTime date)
     {
         DateTime firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
@@ -152,24 +128,13 @@ public class DateTimePickerLogic : BaseNetLogic
     [ExportMethod]
     public void Confirm()
     {
-        //var SelectedTime = Owner.Get("SelectedTime1");
-        // SelectedTime.GetVariable("SelectedMinute").Value = minutes;
-        // SelectedTime.GetVariable("SelectedHour").Value = hours;
-        // SelectedTime.GetVariable("SelectedSecond").Value = seconds;
         int hours = UISelected.GetVariable("Hour").Value ;
         int minutes = UISelected.GetVariable("Minute").Value ;
         int seconds = UISelected.GetVariable("Second").Value ;
         DateTime dateTime = UISelected.Value;
         string dateString = dateTime.ToString("yyyy-MM-dd")+" "+hours+":"+minutes+":"+seconds;
-        // UISelected.GetVariable("Year").Value ;
-        // UISelected.GetVariable("Month").Value ;
-        // UISelected.GetVariable("Day").Value ;
-       
-
-        // Add the TimeSpan to the original date
         DateTime newDate = DateTime.Parse(dateString);
-        //SelectedTime.GetVariable("SelectedDateTime").Value = newDate;
-        //SelectedTime = UISelected;
+
         SelectedTime.Value = newDate;
         SelectedTime.GetVariable("Year").Value = newDate.Year;
         SelectedTime.GetVariable("Month").Value= newDate.Month;
@@ -177,6 +142,7 @@ public class DateTimePickerLogic : BaseNetLogic
         SelectedTime.GetVariable("Hour").Value= newDate.Hour;
         SelectedTime.GetVariable("Minute").Value=newDate.Minute;
         SelectedTime.GetVariable("Second").Value=newDate.Second;
+
         int dayOfWeek = (int)newDate.DayOfWeek;
          SelectedTime.GetVariable("DayOfWeek").Value=dayOfWeek;
     }
@@ -205,8 +171,15 @@ public class DateTimePickerLogic : BaseNetLogic
     public void BackToday()
     {
         DateTime currentDate = GetCurrentDate();
+        UISelected.Value = currentDate.Date;
         repaintCalendar(currentDate);
     }
+
+     [ExportMethod]
+    public void EvaluateMonth()
+    {
+        repaintCalendar(UISelected.Value);
+    }   
 
     public IUAVariable SelectedTime; // = LogicObject.GetVariable("SelectedTime");
     public IUAVariable UISelected; 
