@@ -17,9 +17,6 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Value: false
-- Class: Reference
-  Type: HasComponent
-  Target: g=2a3edc6417ff3471afe52c42ecf0788e
 - Name: DateTimeObject
   Id: g=e01f5602e6c40ac80dd25ed94f12fe8f
   Supertype: BaseObjectType
@@ -52,6 +49,3 @@ Children:
     Type: BaseDataVariableType
     DataType: Int32
     Value: 0
-- Class: Reference
-  Type: HasComponent
-  Target: g=a7bf46ed31f02ae2048ac55315e59310
