@@ -17,3 +17,12 @@ Children:
     Type: BaseDataVariableType
     DataType: Boolean
     Value: false
+- Class: Reference
+  Type: HasComponent
+  Target: g=977117ebb50546dfa552a6a52a720560
+- Class: Reference
+  Type: HasComponent
+  Target: g=c85aa7c7d70c12918ac8ec49ef9982b1
+- Class: Reference
+  Type: HasComponent
+  Target: g=842ce10855f580bc50d9dcbc76bf9477
