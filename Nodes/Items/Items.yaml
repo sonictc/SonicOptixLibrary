@@ -1131,6 +1131,7 @@ Children:
       Children:
       - Class: Reference
         Target: ns=9;i=621
+        Direction: Forward
       - Name: Width
         Type: BaseVariableType
         DataType: Size
