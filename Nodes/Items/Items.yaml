@@ -24932,3 +24932,7 @@ Children:
       Type: BaseDataVariableType
       DataType: Int32
       Value: 0
+    - Name: ProcessStatus
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
