@@ -131,12 +131,14 @@ public class StoreAndForwardLogic : BaseNetLogic
             }
             else
             {
-                Log.Info("ReadBuffer", "Empty buffer");
+                Log.Warning("ReadBuffer", "Empty buffer");
+                LogicObject.GetVariable("ProcessStatus").Value = "Empty buffer";
             }
         }
         catch (Exception ex)
         {
             Log.Error("ReadBuffer", ex.Message + ex.InnerException);
+            LogicObject.GetVariable("ProcessStatus").Value = "Error reading buffer";
         }
     }
 
@@ -174,7 +176,7 @@ public class StoreAndForwardLogic : BaseNetLogic
         return newArray;
     }
 
-    private void SendBuffer(string[] headers, object[,] buffer)
+    private void SendBuffer(string[] headers, object[,] buffer,out bool succeed)
     {
         //Get external database table
         Table myTable = ExternalDB.Tables.Get<Table>(ExternalTableName);
@@ -184,12 +186,20 @@ public class StoreAndForwardLogic : BaseNetLogic
             try
             {
                 myTable.Insert(headers, buffer);
+                succeed = true;
                 Log.Info("SendBuffer", "Complete insert buffer to external database");
             }
             catch (Exception ex)
             {
+                succeed = false;
                 Log.Error("SendBuffer", ex.Message);
+                LogicObject.GetVariable("ProcessStatus").Value = "Error send buffer";
             }
+        }
+        else {
+            Log.Warning("SendBuffer", "No external table found in config, please check your ODBC table name and config");
+            succeed = false;
+            LogicObject.GetVariable("ProcessStatus").Value = "No external table found in configuration";
         }
     }
 
@@ -209,6 +219,7 @@ public class StoreAndForwardLogic : BaseNetLogic
         catch (Exception ex)
         {
             Log.Error("MarkSent", ex.Message);
+            LogicObject.GetVariable("ProcessStatus").Value = "Error mark buffer as sent";
         }
     }
 
@@ -249,10 +260,12 @@ public class StoreAndForwardLogic : BaseNetLogic
                 "Completed delete forwarded record before "
                     + lastKeepTime.ToString("yyyy-MM-dd HH:mm:ss")
             );
+          
         }
         catch (Exception ex)
         {
             Log.Error("DeleteLocalRecord", ex.Message);
+            LogicObject.GetVariable("ProcessStatus").Value = "Error deleting local record";
         }
     }
 
@@ -299,12 +312,18 @@ public class StoreAndForwardLogic : BaseNetLogic
             if (bufferRemain)
             {
                 ReadBuffer(out object[,] buffer, out string[] headers, out lastForwardId);
-                SendBuffer(headers, buffer);
+                SendBuffer(headers, buffer ,out bool succeed);
+                if (succeed)
+                {
                 MarkSent(lastForwardId);
                 DeleteLocalRecord(lastForwardId);
+                LogicObject.GetVariable("ProcessStatus").Value = "Normal";
+                }
+                
             }
             else
             {
+                LogicObject.GetVariable("ProcessStatus").Value = "All buffer sent, no buffer remain";
                 Log.Info("StoreAndForward", "No buffer remaining");
                 DeleteLocalRecord(lastForwardId);
             }

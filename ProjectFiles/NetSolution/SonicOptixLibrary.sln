@@ -2,7 +2,7 @@
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SonicOptixLibrary", "SonicOptixLibrary.csproj", "{4229D2CF-6AC4-DC7D-04CC-517935FA5866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SonicOptixLibrary", "SonicOptixLibrary.csproj", "{BFC889CD-D880-99FC-313A-764C75DE2BFC}"
 EndProject
 Global
     GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
         Release|Any CPU = Release|Any CPU
     EndGlobalSection
     GlobalSection(ProjectConfigurationPlatforms) = postSolution
-        {4229D2CF-6AC4-DC7D-04CC-517935FA5866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {4229D2CF-6AC4-DC7D-04CC-517935FA5866}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {4229D2CF-6AC4-DC7D-04CC-517935FA5866}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {4229D2CF-6AC4-DC7D-04CC-517935FA5866}.Release|Any CPU.Build.0 = Release|Any CPU
+        {BFC889CD-D880-99FC-313A-764C75DE2BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {BFC889CD-D880-99FC-313A-764C75DE2BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {BFC889CD-D880-99FC-313A-764C75DE2BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {BFC889CD-D880-99FC-313A-764C75DE2BFC}.Release|Any CPU.Build.0 = Release|Any CPU
     EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE
