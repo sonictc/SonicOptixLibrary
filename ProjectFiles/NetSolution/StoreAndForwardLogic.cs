@@ -42,7 +42,15 @@ public class StoreAndForwardLogic : BaseNetLogic
         ExternalTableName = LogicObject.GetVariable("ExternalTableName").Value;
         DeleteTransferedRecord = LogicObject.GetVariable("DeleteTransferedRecord").Value;
         LimitTransfer = LogicObject.GetVariable("LimitTransfer").Value;
-
+        Table LocalTable = LocalDB.Tables.Get<Table>(LocalTableName);
+        var fw = LocalTable.Columns.Get("Forwarded");
+        if(fw!=null){
+            Log.Info("Found forwarded column");
+        
+        }else{
+            LocalTable.AddColumn("Forwarded",OpcUa.DataTypes.Boolean);
+            Log.Info("forwarded column not found, Created forward column successfully");
+        }
         int interval = LogicObject.GetVariable("SendInterval").Value;
         periodicTask = new PeriodicTask(StoreAndForward, interval, LogicObject);
         periodicTask.Start();
