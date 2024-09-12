@@ -6,21 +6,21 @@ Project:
  Company: ''
  Copyright: ''
  FormatVersion: 1
- ProductVersion: 1.3
+ ProductVersion: 1.4
  CoreVersion: 3.0
  Dependencies:
   2:
    Uri: 'urn:FTOptix:CoreBase'
    Module: FTOptix.CoreBase
-   Version: 3.1
+   Version: 4.0
   3:
    Uri: 'urn:FTOptix:HMIProject'
    Module: FTOptix.HMIProject
-   Version: 5.3
+   Version: 6.1
   5:
    Uri: 'urn:FTOptix:NetLogic'
    Module: FTOptix.NetLogic
-   Version: 1.0
+   Version: 3.0
   6:
    Uri: 'urn:FTOptix:DataLogger'
    Module: FTOptix.DataLogger
@@ -36,11 +36,11 @@ Project:
   9:
    Uri: 'urn:FTOptix:UI'
    Module: FTOptix.UI
-   Version: 11.0
+   Version: 12.4
   10:
    Uri: 'urn:FTOptix:UI:Net'
    Module: FTOptix.UI.Net
-   Version: 11.0
+   Version: 12.4
   11:
    Uri: 'urn:FTOptix:DataLogger:Net'
    Module: FTOptix.DataLogger.Net
@@ -65,14 +65,22 @@ Project:
    Uri: 'urn:FTOptix:SQLiteStore:Net'
    Module: FTOptix.SQLiteStore.Net
    Version: 1.0
+  17:
+   Uri: 'urn:FTOptix:Store'
+   Module: FTOptix.Store
+   Version: 1.0
+  18:
+   Uri: 'urn:FTOptix:Store:Net'
+   Module: FTOptix.Store.Net
+   Version: 1.0
  Statistics:
-  TotalNodeCount: 5546
-  Objects: 905
-  ObjectTypes: 17
-  Variables: 4607
+  TotalNodeCount: 5659
+  Objects: 906
+  ObjectTypes: 18
+  Variables: 4714
   VariableTypes: 0
   DataTypes: 0
-  Methods: 17
+  Methods: 21
   References: 8
   ReferenceTypes: 0
   Files: 4

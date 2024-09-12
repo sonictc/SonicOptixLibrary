@@ -8,15 +8,12 @@ Children:
   - Name: FileName
     Type: BaseDataVariableType
     DataType: String
-    Value: ""
   - Name: Size
     Type: BaseDataVariableType
     DataType: Float
-    Value: 0.0
   - Name: IsDirectory
     Type: BaseDataVariableType
     DataType: Boolean
-    Value: false
 - Class: Reference
   Type: HasComponent
   Target: g=977117ebb50546dfa552a6a52a720560
