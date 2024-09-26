@@ -1181,6 +1181,7 @@ Children:
       Children:
       - Class: Reference
         Target: ns=9;i=621
+        Direction: Forward
       - Name: Width
         Type: BaseVariableType
         DataType: Size
@@ -20173,6 +20174,7 @@ Children:
       Children:
       - Class: Reference
         Target: ns=9;i=519
+        Direction: Forward
       - Name: Width
         Type: BaseVariableType
         DataType: Size
@@ -23474,6 +23476,386 @@ Children:
     Type: BaseDataVariableType
     DataType: Guid
     Value: "609aa5370a84d65a7ef3e021b6098bfd"
+  - Name: LibraryItemVersion
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 1
+- Name: StoreAndForwardLogic
+  Type: ObjectLibraryItem
+  Description: {"LocaleId":"","Text":"Use \"Store and Forward Logic\" to do buffering and tranferring between \"EmbeddedDatabase\" and \"ODBC Database\"\nFunction\n1. Periodically transfer database table to ODBC table\n2. Delete old data based on parameter setting\n3. Option to not delete but just mark as sent\n\nHow to use\n1. Bind the LocalDatabase and ExternalDatabase to database node. Local must be EmbeddedDatabase and External must be ODBC\n2. Limit Transfer size can be set\n3. Set send interval\n4. Set LocalTableName\n5. Set ExternalTableName\n6. You have to create ODBC database and Table manually and the column name and datatype MUST match to EmbeddedDB\n7. Select whether you want to delete transfered record or not.\n8. Set the Time you want to keep your local data. If all ZERO , the record will suddenly be deleted after sent.\n9. ExternalDatabase Status can be use to show the transfer status.\n"}
+  Children:
+  - Name: StoreAndForwardLogic
+    Id: g=de81627e21740511484cf88246129a9d
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: LocalDatabase
+      Type: NodePointer
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"ef7bdea873b638d519298ceeee7cf3e8","Namespace":4}
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/ObjectTypes/BaseObjectType/Store/SQLiteStore"
+    - Name: ExternalDatabase
+      Type: NodePointer
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"09539809ce88a8b52ad40ee8da83b6fd","Namespace":4}
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/ObjectTypes/BaseObjectType/Store/ODBCStore"
+      - Name: NodeClass
+        Type: PropertyType
+        DataType: NodePointerNodeClass
+        ModellingRule: Optional
+    - Name: LimitTransfer
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 999
+    - Name: SendInterval
+      Type: BaseDataVariableType
+      DataType: Duration
+      Value: "0:00:00:20.0000000"
+    - Class: Method
+      Name: StoreAndForward
+    - Name: LocalTableName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "DataLogger1"
+    - Name: ExternalTableName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "DataCenter"
+    - Name: DeleteTransferedRecord
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: Years
+        Type: BaseDataVariableType
+        DataType: Int32
+      - Name: Months
+        Type: BaseDataVariableType
+        DataType: Int32
+      - Name: Days
+        Type: BaseDataVariableType
+        DataType: Int32
+      - Name: Hours
+        Type: BaseDataVariableType
+        DataType: Int32
+      - Name: Minutes
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 1
+      - Name: Seconds
+        Type: BaseDataVariableType
+        DataType: Int32
+    - Name: ExternalDatabaseStatus
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Name: ProcessStatus
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+  - Name: LibraryItemGuid
+    Type: BaseDataVariableType
+    DataType: Guid
+    Value: "2c69dc310ff6e54401e6de428a8dabbd"
+  - Name: LibraryItemVersion
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 1
+- Name: MQTTLogicV2
+  Type: ObjectLibraryItem
+  Description: {"LocaleId":"","Text":"Update from RA MQTTLogic \n1. Remve client AuthorizedUser variable\n2. Replace with User and password variable\n3. Inside NetLogic, modify logic to use new variable.\n"}
+  Children:
+  - Name: MQTTLogicV2
+    Id: g=de35d1c56a6ef849f62af25079289a94
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Class: Method
+      Name: StartListeningToVariables
+    - Name: MqttServer
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Children:
+      - Name: IPAddress
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "0.0.0.0"
+      - Name: Port
+        Type: BaseDataVariableType
+        DataType: UInt16
+        Value: 1883
+      - Name: UseSSL
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Children:
+        - Name: Certificate
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+        - Name: CertificatePassword
+          Type: BaseDataVariableType
+          DataType: Password
+      - Name: AutoStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+      - Name: UserAuthentication
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Children:
+        - Name: AuthorizedUsers
+          Type: BaseDataVariableType
+          DataType: String
+          ValueRank: OneDimension
+          ArrayDimensions: [0]
+      - Name: IsRunning
+        Type: BaseDataVariableType
+        DataType: Boolean
+      - Name: IsDebuggingMode
+        Type: BaseDataVariableType
+        DataType: Boolean
+      - Name: MaxNumberOfConnections
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 10
+      - Name: NumberOfConnections
+        Type: BaseDataVariableType
+        DataType: Int32
+    - Name: MqttClient
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: IPAddress
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "broker.hivemq.com"
+      - Name: Port
+        Type: BaseDataVariableType
+        DataType: UInt16
+        Value: 1883
+      - Name: UseSSL
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Children:
+        - Name: CaCertificate
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+        - Name: ClientCertificate
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+        - Name: ClientCertificatePassword
+          Type: BaseDataVariableType
+          DataType: Password
+        - Name: AllowUntrustedCertificates
+          Type: BaseDataVariableType
+          DataType: Boolean
+      - Name: UserAuthentication
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+        Children:
+        - Name: User
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "๊User1"
+        - Name: Password
+          Type: BaseDataVariableType
+          DataType: Password
+      - Name: IsRunning
+        Type: BaseDataVariableType
+        DataType: Boolean
+      - Name: IsDebuggingMode
+        Type: BaseDataVariableType
+        DataType: Boolean
+      - Name: ClientId
+        Type: BaseDataVariableType
+        DataType: String
+      - Name: Connected
+        Type: BaseDataVariableType
+        DataType: Boolean
+      - Name: SentPackages
+        Type: BaseDataVariableType
+        DataType: Int32
+      - Name: ReceivedPackages
+        Type: BaseDataVariableType
+        DataType: Int32
+    - Class: Method
+      Name: StartMQTTServer
+    - Name: Subscriber
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Children:
+      - Name: LiveTags
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+        Children:
+        - Name: LiveTagsFolder
+          Type: NodePointer
+          DataType: NodeId
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+          - Name: NodeClass
+            Type: PropertyType
+            DataType: NodePointerNodeClass
+            ModellingRule: Optional
+        - Name: LiveTagsTopic
+          Type: BaseDataVariableType
+          DataType: String
+        - Name: LastPackageTimestamp
+          Type: BaseDataVariableType
+          DataType: DateTime
+      - Name: StoreTables
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Children:
+        - Name: Store
+          Type: NodePointer
+          DataType: NodeId
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: "/Types/ObjectTypes/BaseObjectType/Store"
+        - Name: StoreTablesTopic
+          Type: BaseDataVariableType
+          DataType: String
+      - Name: CustomPayload
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Children:
+        - Name: CustomPayloadMessage
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+        - Name: CustomPayloadTopic
+          Type: BaseDataVariableType
+          DataType: String
+    - Name: Publisher
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: LiveTags
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+        Children:
+        - Name: LiveTagsPeriod
+          Type: BaseDataVariableType
+          DataType: Duration
+        - Name: LiveTagsFolder
+          Type: NodePointer
+          DataType: NodeId
+          Value: {"IdType":2,"Id":"94dc4d4c2ba5f4599ad47c37af62e45e","Namespace":4}
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+          - Name: NodeClass
+            Type: PropertyType
+            DataType: NodePointerNodeClass
+            ModellingRule: Optional
+        - Name: LiveTagsTopic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "sonic/optix"
+        - Name: QoS
+          Type: BaseDataVariableType
+          DataType: Int32
+        - Name: Retain
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+      - Name: StoreTables
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Children:
+        - Name: Store
+          Type: NodePointer
+          DataType: NodeId
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: "/Types/ObjectTypes/BaseObjectType/Store"
+        - Name: TableNames
+          Type: BaseDataVariableType
+          DataType: Int32
+          Children:
+          - Name: Table1
+            Type: BaseDataVariableType
+            DataType: String
+          - Name: Table2
+            Type: BaseDataVariableType
+            DataType: String
+        - Name: PreserveData
+          Type: BaseDataVariableType
+          DataType: Boolean
+        - Name: MaximumItemsPerPacket
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 20
+        - Name: MaximumPublishTime
+          Type: BaseDataVariableType
+          DataType: Duration
+          Value: "0:01:00:0.0000000"
+        - Name: MinimumPublishTime
+          Type: BaseDataVariableType
+          DataType: Duration
+          Value: "0:00:05:0.0000000"
+        - Name: StoreTablesTopic
+          Type: BaseDataVariableType
+          DataType: String
+        - Name: QoS
+          Type: BaseDataVariableType
+          DataType: Int32
+        - Name: Retain
+          Type: BaseDataVariableType
+          DataType: Boolean
+        - Name: TablesPrefix
+          Type: BaseDataVariableType
+          DataType: String
+        - Name: AllRows
+          Type: BaseDataVariableType
+          DataType: Boolean
+      - Name: CustomPayload
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Children:
+        - Name: CustomPayloadMessage
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+        - Name: CustomPayloadTopic
+          Type: BaseDataVariableType
+          DataType: String
+        - Name: CustomPayloadPeriod
+          Type: BaseDataVariableType
+          DataType: Duration
+        - Name: QoS
+          Type: BaseDataVariableType
+          DataType: Int32
+        - Name: Retain
+          Type: BaseDataVariableType
+          DataType: Boolean
+    - Class: Method
+      Name: FetchData
+    - Class: Method
+      Name: StartCustomPayload
+  - Name: LibraryItemGuid
+    Type: BaseDataVariableType
+    DataType: Guid
+    Value: "65d481b90f124662655d0e432542d6d4"
   - Name: LibraryItemVersion
     Type: BaseDataVariableType
     DataType: UInt32

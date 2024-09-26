@@ -49,14 +49,38 @@ Project:
    Uri: 'urn:FTOptix:HMIProject:Net'
    Module: FTOptix.HMIProject.Net
    Version: 4.4
+  13:
+   Uri: 'urn:FTOptix:ODBCStore'
+   Module: FTOptix.ODBCStore
+   Version: 1.0
+  14:
+   Uri: 'urn:FTOptix:ODBCStore:Net'
+   Module: FTOptix.ODBCStore.Net
+   Version: 1.0
+  15:
+   Uri: 'urn:FTOptix:SQLiteStore'
+   Module: FTOptix.SQLiteStore
+   Version: 1.0
+  16:
+   Uri: 'urn:FTOptix:SQLiteStore:Net'
+   Module: FTOptix.SQLiteStore.Net
+   Version: 1.0
+  17:
+   Uri: 'urn:FTOptix:Store'
+   Module: FTOptix.Store
+   Version: 1.0
+  18:
+   Uri: 'urn:FTOptix:Store:Net'
+   Module: FTOptix.Store.Net
+   Version: 1.0
  Statistics:
-  TotalNodeCount: 5554
-  Objects: 904
-  ObjectTypes: 16
-  Variables: 4618
+  TotalNodeCount: 5659
+  Objects: 906
+  ObjectTypes: 18
+  Variables: 4714
   VariableTypes: 0
   DataTypes: 0
-  Methods: 16
+  Methods: 21
   References: 8
   ReferenceTypes: 0
   Files: 4
