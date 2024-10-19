@@ -23860,3 +23860,39 @@ Children:
     Type: BaseDataVariableType
     DataType: UInt32
     Value: 1
+- Name: HotBackupControllerSwitch
+  Type: ObjectLibraryItem
+  Children:
+  - Name: LibraryItemGuid
+    Type: BaseDataVariableType
+    DataType: Guid
+    Value: "b90f19eba6370a147da40ee279ba08a9"
+  - Name: LibraryItemVersion
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 1
+  - Name: HotBackupControllerSwitch
+    Id: g=9b238c458cf412442199d0e4342a7580
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Class: Method
+      Name: GenerateNodesIntoModel
+    - Name: TargetFolder
+      Type: BaseDataVariableType
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"6174ac0927cf9cc99336e1d18f328143","Namespace":4}
+    - Name: DeleteExistingTags
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+    - Class: Method
+      Name: GenerateNodesIntoModel2
+    - Name: PrimaryTags
+      Type: BaseDataVariableType
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"cd3dc16cb133808c6748d0d9fc1cbb6f","Namespace":4}
+    - Name: SecondaryTags
+      Type: BaseDataVariableType
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"b4c4a4e28df91cd7a806b780fc9392cd","Namespace":4}

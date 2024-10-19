@@ -74,13 +74,13 @@ Project:
    Module: FTOptix.Store.Net
    Version: 1.0
  Statistics:
-  TotalNodeCount: 5659
-  Objects: 906
-  ObjectTypes: 18
-  Variables: 4714
+  TotalNodeCount: 5669
+  Objects: 907
+  ObjectTypes: 19
+  Variables: 4720
   VariableTypes: 0
   DataTypes: 0
-  Methods: 21
+  Methods: 23
   References: 8
   ReferenceTypes: 0
   Files: 4
