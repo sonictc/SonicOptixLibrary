@@ -920,7 +920,7 @@ Children:
     - Name: LogInterval
       Type: BaseDataVariableType
       DataType: Duration
-      Value: "0:00:00:1.0000000"
+      Value: "0:00:00:01.0000000"
     - Name: ProgramName
       Type: BaseDataVariableType
       DataType: String
@@ -20539,7 +20539,7 @@ Children:
               Value: 3
             - Name: ImagePosition
               Type: BaseDataVariableType
-              DataType: Position
+              DataType: ButtonImagePosition
               ModellingRule: Optional
               Value: 4
             - Name: ImageWidth
@@ -23808,11 +23808,11 @@ Children:
         - Name: MaximumPublishTime
           Type: BaseDataVariableType
           DataType: Duration
-          Value: "0:01:00:0.0000000"
+          Value: "0:01:00:00.0000000"
         - Name: MinimumPublishTime
           Type: BaseDataVariableType
           DataType: Duration
-          Value: "0:00:05:0.0000000"
+          Value: "0:00:05:00.0000000"
         - Name: StoreTablesTopic
           Type: BaseDataVariableType
           DataType: String
@@ -23870,7 +23870,7 @@ Children:
   - Name: LibraryItemVersion
     Type: BaseDataVariableType
     DataType: UInt32
-    Value: 1
+    Value: 2
   - Name: HotBackupControllerSwitch
     Id: g=9b238c458cf412442199d0e4342a7580
     Supertype: NetLogic
@@ -23882,10 +23882,6 @@ Children:
       Type: BaseDataVariableType
       DataType: NodeId
       Value: {"IdType":2,"Id":"6174ac0927cf9cc99336e1d18f328143","Namespace":4}
-    - Name: DeleteExistingTags
-      Type: BaseDataVariableType
-      DataType: Boolean
-      Value: true
     - Class: Method
       Name: GenerateNodesIntoModel2
     - Name: PrimaryTags
@@ -23896,3 +23892,39 @@ Children:
       Type: BaseDataVariableType
       DataType: NodeId
       Value: {"IdType":2,"Id":"b4c4a4e28df91cd7a806b780fc9392cd","Namespace":4}
+    - Class: Method
+      Name: Initialize
+- Name: CreateTables
+  Type: ObjectLibraryItem
+  Description: {"LocaleId":"","Text":"How to use this script>>\n1. Run query SELECT * FROM INFORMATION_SCHEMA.COLUMNS in the database\n2. Copy the result to CSV file\n3. Drag this script to place under target ODBC\n4. Define CSVFile path\n5. Right click the script and select Import\n\n"}
+  Children:
+  - Name: LibraryItemGuid
+    Type: BaseDataVariableType
+    DataType: Guid
+    Value: "812cb8998c486265285b72c3edc94850"
+  - Name: LibraryItemVersion
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 2
+  - Name: CreateTables
+    Id: g=e5a507db1f45de352c1a4ad6f857b5e2
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: BehaviourStartPriority
+      Type: BehaviourStartPriorityVariableType
+      DataType: Byte
+      Value: 180
+    - Class: Method
+      Name: Import
+    - Name: CSVFile
+      Type: BaseDataVariableType
+      DataType: ResourceUri
+      Value: "ns=4;%PROJECTDIR%/dbexport.csv"
+    - Name: WrapFields
+      Type: BaseDataVariableType
+      DataType: Boolean
+    - Name: CSVSeparator
+      Type: BaseDataVariableType
+      DataType: String
+      Value: ","

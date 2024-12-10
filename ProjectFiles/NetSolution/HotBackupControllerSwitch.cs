@@ -18,18 +18,40 @@ using System.Linq;
 
 public class HotBackupControllerSwitch : BaseNetLogic
 {
+    public override void Start()
+    {   
+        Initialize();
+    }
+    [ExportMethod]
+    public void Initialize(){
+                var PrimaryActive = Project.Current.GetVariable("Model/HotBackup/ControllerA_Primary");
+        var SecondaryActive = Project.Current.GetVariable("Model/HotBackup/ControllerB_Secondary");
+        PrimaryActive.RemoteRead();
+        SecondaryActive.RemoteRead();
+        
+        if (PrimaryActive.Value){
+                GenerateNodesIntoModel();
+           
+        } else if (SecondaryActive.Value)
+        {
+             GenerateNodesIntoModel2();
+
+        } else {
+            GenerateNodesIntoModel();
+              
+        }
+    }
     [ExportMethod]
     public void GenerateNodesIntoModel()
     {
         // Get nodes where to search PLC tags
-        startingNodeToFetch = InformationModel.Get(LogicObject.GetVariable("StartingNodeToFetch").Value);
-        if (startingNodeToFetch == null)
+        Tags = InformationModel.Get(LogicObject.GetVariable("PrimaryTags").Value);
+        if (Tags == null)
         {
-            Log.Error(this.GetType().Name, "Cannot get StartingNodeToFetch");
+            Log.Error(this.GetType().Name, "Cannot get PrimaryTags");
             return;
         }
-        // Delete existing nodes if needed
-        deleteExistingTags = LogicObject.GetVariable("DeleteExistingTags").Value;
+
         // Get the node where we are going to create the Model variables/objects
         targetNode = InformationModel.Get<Folder>(LogicObject.GetVariable("TargetFolder").Value);
         if (targetNode == null)
@@ -40,19 +62,19 @@ public class HotBackupControllerSwitch : BaseNetLogic
         // Start procedure
         generateNodesTask = new LongRunningTask(GenerateNodesMethod, LogicObject);
         generateNodesTask.Start();
+        Log.Info("Linked to primary successfully");
     }
      [ExportMethod]
     public void GenerateNodesIntoModel2()
     {
         // Get nodes where to search PLC tags
-        startingNodeToFetch = InformationModel.Get(LogicObject.GetVariable("StartingNodeToFetch2").Value);
-        if (startingNodeToFetch == null)
+        Tags = InformationModel.Get(LogicObject.GetVariable("SecondaryTags").Value);
+        if (Tags == null)
         {
-            Log.Error(this.GetType().Name, "Cannot get StartingNodeToFetch");
+            Log.Error(this.GetType().Name, "Cannot get SecondaryTags");
             return;
         }
-        // Delete existing nodes if needed
-        deleteExistingTags = LogicObject.GetVariable("DeleteExistingTags").Value;
+
         // Get the node where we are going to create the Model variables/objects
         targetNode = InformationModel.Get<Folder>(LogicObject.GetVariable("TargetFolder").Value);
         if (targetNode == null)
@@ -63,19 +85,20 @@ public class HotBackupControllerSwitch : BaseNetLogic
         // Start procedure
         generateNodesTask = new LongRunningTask(GenerateNodesMethod, LogicObject);
         generateNodesTask.Start();
+        Log.Info("Linked to secondary successfully");
     }
 
     private void GenerateNodesMethod()
     {
         
-        GenerateNodes(startingNodeToFetch);
+        GenerateNodes(Tags);
         generateNodesTask?.Dispose();
     }
 
     private LongRunningTask generateNodesTask;
-    private IUANode startingNodeToFetch;
+    private IUANode Tags;
     private IUANode targetNode;
-    private bool deleteExistingTags;
+    private bool deleteExistingTags = false;
 
     /// <summary>
     /// Generates a set of objects and variables in model in order to have a "copy" of a set of imported tags, retrieved from a starting node
@@ -106,7 +129,7 @@ public class HotBackupControllerSwitch : BaseNetLogic
                 break;
             case FTOptix.Core.Folder:
                 IUANode newFolder = null;
-                if (fieldNode.NodeId != startingNodeToFetch.NodeId)
+                if (fieldNode.NodeId != Tags.NodeId)
                     newFolder = CreateFolder(fieldNode, parentNode);
                 else
                     newFolder = parentNode;
@@ -128,14 +151,14 @@ public class HotBackupControllerSwitch : BaseNetLogic
         {
             var newFolder = InformationModel.Make<FTOptix.Core.Folder>(fieldNode.BrowseName);
             parentNode.Add(newFolder);
-            Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Creating \"{Log.Node(newFolder)}\"");
+            //Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Creating \"{Log.Node(newFolder)}\"");
             return newFolder;
         }
         else
         {
             if (deleteExistingTags)
             {
-                Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Deleting \"{Log.Node(fieldNode)}\" (DeleteExistingTags is set to True)");
+              //  Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Deleting \"{Log.Node(fieldNode)}\" (DeleteExistingTags is set to True)");
                 parentNode.Get<FTOptix.Core.Folder>(fieldNode.BrowseName).Children.Clear();
             }
             else
@@ -162,7 +185,7 @@ public class HotBackupControllerSwitch : BaseNetLogic
         {
             existingNode = InformationModel.MakeObject(browseNamePrefix + filedNodeBrowseName);
             parentNode.Add(existingNode);
-            Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Creating \"{Log.Node(existingNode)}\" object");
+           // Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Creating \"{Log.Node(existingNode)}\" object");
         }
         else
             Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Updating \"{Log.Node(existingNode)}\" object");
@@ -185,7 +208,7 @@ public class HotBackupControllerSwitch : BaseNetLogic
             var tagBrowseName = mTag.BrowseName.Replace("/", "_");
             existingNode = InformationModel.MakeVariable(tagBrowseName, mTag.DataType, mTag.ArrayDimensions);
             parentNode.Add(existingNode);
-            Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Creating \"{Log.Node(existingNode)}\" variable");
+            //Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Creating \"{Log.Node(existingNode)}\" variable");
         }
         else
             Log.Info($"{this.GetType().Name}.{System.Reflection.MethodBase.GetCurrentMethod().Name}", $"Updating \"{Log.Node(existingNode)}\" object");
