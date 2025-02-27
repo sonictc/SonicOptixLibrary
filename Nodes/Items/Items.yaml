@@ -23928,3 +23928,324 @@ Children:
       Type: BaseDataVariableType
       DataType: String
       Value: ","
+- Name: ExportCSVToEmail
+  Type: ObjectLibraryItem
+  Children:
+  - Name: LibraryItemGuid
+    Type: BaseDataVariableType
+    DataType: Guid
+    Value: "ed06798d34052e0e8abf043739061b29"
+  - Name: LibraryItemVersion
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 1
+  - Name: ExportCSVToEmail
+    Id: g=55ee95feae84ca32e33e735085424608
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: CSVPath
+      Type: BaseDataVariableType
+      DataType: AbsoluteResourceUri
+      Value: "file:///C:/Users/Phyna/OneDrive/Documents/Rockwell Automation/FactoryTalk Optix/Projects/MARS_DryerEndOfLine/ProjectFiles/report.csv"
+    - Name: FieldDelimiter
+      Type: BaseDataVariableType
+      DataType: String
+      Value: ","
+    - Class: Method
+      Name: Export
+    - Name: Table
+      Type: NodePointer
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"fa1090b0150938141b454ce0eb2e08dd","Namespace":4}
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/ObjectTypes/BaseObjectType/Table"
+    - Name: Query
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "SELECT * FROM"
+      Children:
+      - Name: StringFormatter1
+        Type: StringFormatter
+        Children:
+        - Name: Format
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+          ReferenceType: HasParameter
+          ModellingRule: Optional
+          Value: {"LocaleId":"en-US","Text":"SELECT * FROM {0:sql_identifier} WHERE LocalTimestamp BETWEEN {1:sql_literal} AND {2:sql_literal}"}
+        - Name: Source0
+          Type: BaseDataVariableType
+          DataType: BaseDataType
+          ReferenceType: HasSource
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "../../../../../ComboBox1/SelectedItem@BrowseName"
+        - Name: ns=2;Source1
+          Type: BaseDataVariableType
+          DataType: BaseDataType
+          ReferenceType: HasSource
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "../../../../../FromDatetimePicker/DateAndTime/Value"
+        - Name: ns=2;Source2
+          Type: BaseDataVariableType
+          DataType: BaseDataType
+          ReferenceType: HasSource
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "../../../../../ToDatetimePicker/DateAndTime/Value"
+    - Name: WrapFields
+      Type: BaseDataVariableType
+      DataType: Boolean
+    - Name: SenderEmailAddress
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "phynaro@gmail.com"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "/Objects/MARS_PackingAutoPrint/Model/EmailSettingObject/SenderEmailAddress"
+    - Name: SenderEmailPassword
+      Type: BaseDataVariableType
+      DataType: Password
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "/Objects/MARS_PackingAutoPrint/Model/EmailSettingObject/SenderEmailPassword"
+    - Name: SMTPHostname
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "smtp.gmail.com"
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "/Objects/MARS_PackingAutoPrint/Model/EmailSettingObject/SMTPHost"
+    - Name: SMTPPort
+      Type: BaseDataVariableType
+      DataType: Int32
+      Value: 587
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "/Objects/MARS_PackingAutoPrint/Model/EmailSettingObject/SMTPPort"
+    - Name: EnableSSL
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "/Objects/MARS_PackingAutoPrint/Model/EmailSettingObject/SSL"
+    - Name: Attachment
+      Type: BaseDataVariableType
+      DataType: ResourceUri
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../GenericTableExporter/CSVPath"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Name: MaxRetriesOnFailure
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Name: DelayBeforeRetry
+      Type: BaseDataVariableType
+      DataType: Duration
+      Value: "0:00:00:10.0000000"
+    - Name: EmailSendingStatus
+      Type: BaseDataVariableType
+      DataType: Boolean
+    - Name: EmailSendingStatusTransitioned
+      Type: VariableTransitionEventDispatcher
+      Children:
+      - Name: Value
+        Type: BaseVariableType
+        DataType: Double
+        Value: 1.0
+      - Name: Transition
+        Type: BaseVariableType
+        DataType: VariableTransition
+      - Name: VariableNodePath
+        Type: BaseVariableType
+        DataType: NodePath
+        Value: "../EmailSendingStatus"
+      - Name: VariableTransitionEventHandler1
+        Type: EventHandler
+        Children:
+        - Name: ListenEventType
+          Type: PropertyType
+          DataType: NodeId
+          Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableTransitionEvent"
+        - Name: MethodsToCall
+          Type: BaseObjectType
+          Children:
+          - Name: MethodContainer1
+            Type: BaseObjectType
+            Children:
+            - Name: ns=2;ObjectPointer
+              Type: NodePointer
+              DataType: NodeId
+              Value: "/Objects/Commands/UICommands"
+              Children:
+              - Name: Kind
+                Type: PropertyType
+                DataType: NodeId
+                Value: "/Types/ObjectTypes/BaseObjectType"
+            - Name: ns=2;Method
+              Type: BaseDataVariableType
+              DataType: String
+              Value: "OpenDialog"
+            - Name: InputArguments
+              Type: BaseObjectType
+              Children:
+              - Name: Dialog
+                Type: BaseDataVariableType
+                DataType: NodeId
+                Description: {"NamespaceIndex":9,"TextId":"OpenDialogDialogDescription"}
+                Value: {"IdType":2,"Id":"56a1fa3286dcf6e8c51fa7e5bc41c09c","Namespace":4}
+              - Name: AliasNode
+                Type: BaseDataVariableType
+                DataType: NodeId
+                Description: {"NamespaceIndex":9,"TextId":"OpenDialogAliasNodeDescription"}
+                ValueRank: ScalarOrOneDimension
+              - Name: ParentItem
+                Type: BaseDataVariableType
+                DataType: NodeId
+                Description: {"NamespaceIndex":9,"TextId":"OpenDialogParentItemDescription"}
+                Children:
+                - Name: DynamicLink
+                  Type: DynamicLink
+                  DataType: NodePath
+                  Value: "../../../../../../..@NodeId"
+            - Name: OutputArguments
+              Type: BaseObjectType
+              Children:
+              - Name: DialogNodeId
+                Type: BaseDataVariableType
+                DataType: NodeId
+                Description: {"NamespaceIndex":9,"TextId":"OpenDialogDialogNodeIdDescription"}
+        - Name: EventArguments
+          Type: VariableTransitionEvent
+          Children:
+          - Name: VariableNodeId
+            Type: BaseVariableType
+            DataType: NodeId
+          - Name: NewValue
+            Type: BaseVariableType
+            DataType: BaseDataType
+          - Name: OldValue
+            Type: BaseVariableType
+            DataType: BaseDataType
+          - Name: EventId
+            Type: PropertyType
+            DataType: ByteString
+          - Name: EventType
+            Type: PropertyType
+            DataType: NodeId
+          - Name: SourceNode
+            Type: PropertyType
+            DataType: NodeId
+          - Name: SourceName
+            Type: PropertyType
+            DataType: String
+          - Name: Time
+            Type: PropertyType
+            DataType: UtcTime
+          - Name: ReceiveTime
+            Type: PropertyType
+            DataType: UtcTime
+          - Name: Message
+            Type: PropertyType
+            DataType: LocalizedText
+          - Name: Severity
+            Type: PropertyType
+            DataType: UInt16
+- Name: CreateValueWidget
+  Type: ObjectLibraryItem
+  Children:
+  - Name: LibraryItemGuid
+    Type: BaseDataVariableType
+    DataType: Guid
+    Value: "66ff4701c98e847b08854febae87fba1"
+  - Name: LibraryItemVersion
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 1
+  - Name: CreateValueWidget
+    Id: g=ab7b395c52d93e928cea8fefa9ced21c
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: BehaviourStartPriority
+      Type: BehaviourStartPriorityVariableType
+      DataType: Byte
+      Value: 180
+    - Class: Method
+      Name: CreateWidget
+- Name: QueryExporter
+  Type: ObjectLibraryItem
+  Description: {"LocaleId":"","Text":"Use this script to export data to csv file. when no table is identified. You can use direct query to Store Object and query to your database using normal query or view\n"}
+  Children:
+  - Name: LibraryItemGuid
+    Type: BaseDataVariableType
+    DataType: Guid
+    Value: "fe91dfaf13b0686838ebdc3e6e1e869b"
+  - Name: LibraryItemVersion
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 1
+  - Name: QueryExporter
+    Id: g=194a55ae17cbb1baf0c0b970d5681666
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Name: CSVPath
+      Type: BaseDataVariableType
+      DataType: AbsoluteResourceUri
+      Value: "file:///C:/Users/Phyna/Documents/Rockwell Automation/FactoryTalk Optix/Projects/ShowCase/ProjectFiles/export.csv"
+    - Name: FieldDelimiter
+      Type: BaseDataVariableType
+      DataType: String
+      Value: ","
+    - Class: Method
+      Name: Export
+    - Name: Store
+      Type: NodePointer
+      DataType: NodeId
+      Value: {"IdType":2,"Id":"0787b97c0c91f9fe2e4f1d4d04556d2a","Namespace":4}
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/ObjectTypes/BaseObjectType/Store"
+      - Name: NodeClass
+        Type: PropertyType
+        DataType: NodePointerNodeClass
+        ModellingRule: Optional
+    - Name: Query
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "SELECT * FROM TodayTotalCases"
+    - Name: WrapFields
+      Type: BaseDataVariableType
+      DataType: Boolean
